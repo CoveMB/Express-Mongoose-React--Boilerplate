@@ -1,0 +1,36 @@
+@baseUrl = {{$dotenv NODE_URL}}
+
+############### AUTH ###############
+
+### Login (one) ADMIN
+POST {{baseUrl}}/login
+Accept: */*
+content-type: application/json
+
+{
+    "email": "admin@email.com",
+    "password": "isAdmin@1"
+}
+
+### Login (one) USER
+POST {{baseUrl}}/login
+Accept: */*
+content-type: application/json
+
+{
+    "email": "user@email.com",
+    "password": "isUser@1"
+}
+
+### Logout (one)
+POST {{baseUrl}}/logout
+Accept: */*
+content-type: application/json
+Authorization: Bearer {{ user_jwt_token }}
+
+
+### Logout (all)
+POST {{baseUrl}}/logoutAll
+Accept: */*
+content-type: application/json
+Authorization: Bearer {{ user_jwt_token }}

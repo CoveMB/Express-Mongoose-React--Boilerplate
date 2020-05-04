@@ -1,0 +1,80 @@
+version: "2.4"
+services:
+  #Node Service
+  app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile.dev
+    container_name: node-${APP_NAME}
+    depends_on: 
+      - mongo
+    env_file: .env
+    ports:
+      - 8000:3000
+      - 9229:9229
+    volumes:
+      - ./app:/node/app:delegated
+      - /node/app/node_modules
+    networks:
+      - containers_net
+
+  #Node Service
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.dev
+    container_name: client-${APP_NAME}
+    depends_on: 
+      - mongo
+    env_file: .env
+    ports:
+      - 80:3000
+      - 3000:3000
+    volumes:
+      - ./client:/node/app:delegated
+      - /node/app/node_modules
+    networks:
+      - containers_net
+
+  #Mongodb Service
+  mongo:
+    image: mongo:4
+    container_name: mongo-${APP_NAME}
+    command: mongod
+    logging:
+      driver: none
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${DB_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - dbdata:/data/db
+    ports:
+      - 27017:${MONGO_PORT}
+    networks:
+      - containers_net
+
+  #Mongo-Express Service
+  mongo-express:
+    image: mongo-express
+    container_name: mongo-express-${APP_NAME}
+    depends_on:
+      - mongo
+    logging:
+      driver: none
+    ports:
+      - 8080:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: ${DB_USER}
+      ME_CONFIG_MONGODB_ADMINPASSWORD: ${DB_PASSWORD}
+    networks:
+      - containers_net
+
+#Docker Networks
+networks:
+  containers_net:
+    driver: bridge
+
+#Volumes
+volumes:
+  dbdata:
+    driver: local

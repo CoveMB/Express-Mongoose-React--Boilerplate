@@ -1,0 +1,12 @@
+{
+  "name": "docker-express-mongoose-react--boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "docker compose up -d"
+  },
+  "author": "Benjamin Marquis",
+  "license": "ISC",
+  "dependencies": {}
+}

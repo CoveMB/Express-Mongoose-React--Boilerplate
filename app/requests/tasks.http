@@ -1,0 +1,45 @@
+@baseUrl = {{$dotenv NODE_URL}}
+
+
+############### TASK ###############
+
+### Post tasks (create)
+POST {{baseUrl}}/tasks
+Accept: */*
+content-type: application/json
+Authorization: Bearer {{ user_jwt_token }}
+
+{
+    "description": "Be someone else"
+}
+
+### GET tasks (all)
+GET {{baseUrl}}/v1/tasks
+Accept: */*
+content-type: application/json
+Authorization: Bearer {{ user_jwt_token }}
+
+### GET tasks (one)
+GET {{baseUrl}}/tasks/5eac2a64c6e65421b74fda5c
+Accept: */*
+content-type: application/json
+
+### PATCH tasks (update)
+PATCH {{baseUrl}}/tasks/5eac2a64c6e65421b74fda5b
+Accept: */*
+content-type: application/json
+Authorization: Bearer {{ user_jwt_token }}
+
+{
+    "completed": false
+}
+
+### Delete tasks (destroy)
+DELETE {{baseUrl}}/tasks/5eadd21b2521b87df65d4e1d
+Accept: */*
+content-type: application/json
+Authorization: Bearer {{ user_jwt_token }}
+
+{
+    "restore": true
+}

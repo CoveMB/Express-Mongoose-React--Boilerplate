@@ -1,0 +1,21 @@
+{
+  "rest-client.environmentVariables": {
+    "$shared": {
+      "version": "v1",
+      "prodToken": "foo",
+      "nonProdToken": "bar",
+    },
+    "local": {
+      "version": "v1",
+      "baseUrl": "http://localhost:800",
+      "token": "{{$shared prodToken}}",
+      "user_jwt_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlYWRjYTBjNzFhY2E0MDFiZTMyMzk3NyIsImlhdCI6MTU4ODQ0Nzc3MX0.Mqwcg1NEmt7_k4dwcuULVeDPSoT0uKTApIBwODYIUsk",
+      "admin_jwt_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlYWRiMzM3OWIyM2E5MzBiZGIwNTQ2MSIsImlhdCI6MTU4ODQ0MTk4NX0.ZfbDMEkdwwUPF_XQv1SEHv-lXl48EbiCKEpeiTx2tPM"
+    },
+    "production": {
+      "baseUrl": "{{$dotenv NODE_URL}}",
+      "token": "{{$shared prodToken}}",
+      "secretKey": "prodSecret"
+    }
+  }
+}

@@ -1,0 +1,51 @@
+@baseUrl = {{$dotenv NODE_URL}}
+
+
+############### USER ###############
+
+### GET users (all)
+GET {{baseUrl}}/users
+Accept: */*
+content-type: application/json
+Authorization: Bearer {{ user_jwt_token }}
+
+### GET user (one)
+GET {{baseUrl}}/users/5eadbde75d532b725a184179
+Accept: */*
+content-type: application/json
+Authorization: Bearer {{ user_jwt_token }}
+
+### GET user (profile)
+GET {{baseUrl}}/users/profile
+Accept: */*
+content-type: application/json
+Authorization: Bearer {{ user_jwt_token }}
+
+### POST users (create)
+POST {{baseUrl}}/users
+Accept: */*
+content-type: application/json
+
+{
+    "name": "user",
+    "email": "emailcom2@gmail.com",
+    "password": "isUser@1"
+}
+
+### PATCH users (update)
+PATCH {{baseUrl}}/users/5eadca0771aca401be323976
+Accept: */*
+content-type: application/json
+Authorization: Bearer {{ admin_jwt_token }}
+
+{
+    "name": "losaasss",
+    "email": "emsssail@gmail.com",
+    "password": "susper@Difsficultpasssw00rd"
+}
+
+### Delete users (destroy)
+DELETE {{baseUrl}}/users/5ead772d4e121c00295d887b
+Accept: */*
+content-type: application/json
+Authorization: Bearer {{ user_jwt_token }}

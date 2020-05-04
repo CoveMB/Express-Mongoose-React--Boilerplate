@@ -1,0 +1,39 @@
+{
+  "name": "docker-node-express-boilerplate",
+  "description": "Boilerplate Dockerized Express app",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon --inspect=0.0.0.0:9229 --signal SIGTERM --ext js ./src/app.js",
+    "debug": "node --inspect-brk=0.0.0.0:9229 ./src/app.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "@sendgrid/mail": "^7.1.0",
+    "app-module-path": "^2.2.0",
+    "app-root-path": "^3.0.0",
+    "axios": "^0.19.2",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "8.2.0",
+    "eslint-import-resolver-node": "^0.3.3",
+    "express": "4.17.1",
+    "hbs": "^4.1.0",
+    "install": "^0.13.0",
+    "joi-password-complexity": "^4.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.5.6",
+    "mongoose": "5.8.3",
+    "ms": "^2.1.2",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.7.6",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-config-airbnb": "^15.1.0",
+    "eslint-plugin-eslint-plugin": "^2.1.0",
+    "eslint-plugin-import": "^2.7.0",
+    "nodemon": "^2.0.2 "
+  }
+}
