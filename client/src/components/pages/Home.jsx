@@ -11,9 +11,9 @@ const Home = () => {
 
     (async () => {
 
-      const response = await fetch('http://localhost:8000/tasks');
+      // const response = await fetch('http://localhost:8000/tasks');
 
-      console.log(response);
+      // console.log(response);
 
     })();
 

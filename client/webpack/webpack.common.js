@@ -1,6 +1,7 @@
 
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { outputPath } = require('./common-paths');
 
 const config = {
@@ -64,8 +65,9 @@ const config = {
   plugins: [
     new HtmlWebpackPlugin({
       template: 'public/index.html',
-      favicon : 'public/favicon.ico'
-    })
+      favicon : 'public/images/icons/favicon.ico'
+    }),
+    new CopyWebpackPlugin([ { from: 'public' } ])
   ]
 };
 
